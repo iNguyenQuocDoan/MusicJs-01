@@ -39,7 +39,7 @@ const play = {
       id: 3,
       path: "songs/Dalab.mp3",
       author: "Dalab",
-      name: "Sinh ra đã là thứ đổi lập nhau",
+      name: "Sinh ra đã là thứ đối lập nhau",
       images: "images/Dalab.png",
       video: "video/Dalab.mp4",
     },
@@ -80,15 +80,16 @@ const play = {
       this._isPlaying = true;
       this._playIconElement.classList.remove("fa-play");
       this._playIconElement.classList.add("fa-pause");
+      this._backgroundVideoElement.play();
       this._render();
     };
     // stop
     this._audioElement.onpause = () => {
       console.log("paused");
       this._isPlaying = false;
-
       this._playIconElement.classList.remove("fa-pause");
       this._playIconElement.classList.add("fa-play");
+      this._backgroundVideoElement.pause();
       this._render();
     };
     // previous
@@ -125,6 +126,8 @@ const play = {
         this._currentTimeElement.textContent = this._formatTime(current);
         this._durationElement.textContent = this._formatTime(duration);
       }
+      // range color
+      this._progressElement.style.background = `linear-gradient(to right, #1db954 ${progress}%, #555 ${progress}%)`;
     };
     // tua
     this._progressElement.onmousedown = () => {
@@ -135,6 +138,7 @@ const play = {
       const nextStep = +this._progressElement.value;
       const seekTime = (this._audioElement.duration / 100) * nextStep;
       this._audioElement.currentTime = seekTime;
+      this._backgroundVideoElement.currentTime = seekTime;
       this._progressElement.seeking = false;
     };
 
