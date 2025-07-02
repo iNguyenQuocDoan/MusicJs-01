@@ -163,6 +163,8 @@ const play = {
         this._handleForNewIndex();
       }
     };
+    // keydown
+    document.addEventListener("keydown", this._handleKeyboard.bind(this));
   },
   _handleControl(step) {
     this._isPlaying = true;
@@ -194,6 +196,22 @@ const play = {
       (this._currentIndex + this._song.length) % this._song.length;
     this._render();
     this._handlePlayback();
+  },
+  _handleKeyboard(event) {
+    const key = event.code;
+
+    switch (key) {
+      case "Space":
+        event.preventDefault();
+        this._togglePlay();
+        break;
+      case "ArrowRight":
+        this._handleControl(this.NEXT);
+        break;
+      case "ArrowLeft":
+        this._handleControl(this.PREV);
+        break;
+    }
   },
   _setLoopState() {
     this._loopElement.classList.toggle("active", this._isLoop);
