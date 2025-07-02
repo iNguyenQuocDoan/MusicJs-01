@@ -17,6 +17,7 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
+  background: linear-gradient(135deg, #0d0d0d 0%, #121212 50%, #1e1e1e 100%);
 }
 
 .player {
@@ -52,7 +53,7 @@ body {
 }
 .dashboard {
   position: relative;
-  height: 50vh;
+  height: 70vh;
   z-index: 1;
 }
 
@@ -110,7 +111,7 @@ header h2 {
   justify-content: space-around;
   align-items: center;
   padding-bottom: 10px;
-  margin-top: 30vh;
+  margin-top: 44vh;
 }
 .control .btn {
   font-size: 20px;
