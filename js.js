@@ -168,7 +168,7 @@ const play = {
   },
   _handleControl(step) {
     this._isPlaying = true;
-    const shouldReset = this._audioElement.currentTime <= this.PREV_THROTTLE;
+    const shouldReset = this._audioElement.currentTime > this.PREV_THROTTLE;
     if (step === this.PREV && shouldReset) {
       this._audioElement.currentTime = 0;
       return;
